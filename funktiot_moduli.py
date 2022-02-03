@@ -21,8 +21,13 @@ def suorakulma(sivuA, sivuB, lavistaja):
         suora = False
     return suora
 
-    # Testataan, että toimii
-vastaus = suorakulma(3, 4, 5)
-print (vastaus)
+# Testataan, että toimii, poista tämä myöhemmin
+if __name__ == "__main__":
+    # Testi kulma on suora
+    vastaus = suorakulma(3, 4, 5)
+    print(vastaus)
 
+    # Testi kulma ei ole suora
+    vastaus = suorakulma(3, 4, 6)
+    print(vastaus)
 
