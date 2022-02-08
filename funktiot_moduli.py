@@ -1,25 +1,27 @@
 # X-funktio tarkistaa onko kulma suora
 
 def suorakulma(sivuA, sivuB, lavistaja):
-    """"Tarkistaa suorakulmaisuuden käyttäen pythagoran lausetta
-
+    """Tarkistaa suorakulmaisuuden käyttäen Pythagoraan lausetta
     Args:
-        Args sivuA (float): Ensimmäisen pituus
-        Args sivuB (float): Toisen pituus
-        lavistaja (float): Lävistäjän mitta
-
+        sivuA (float): Ensimmäisen seinän pituus
+        sivuB (float): Toisen seinän pituus
+        lavistaja (float): Huoneen lävistäjän pituus
     Returns:
-        boolean : TRUE-> suorakulma
+        float: Lävistäjän pituusvirhe 0 -> ei virhettä
     """
-    A_nelio = sivuA * sivuA
-    B_nelio = sivuB * sivuB
-    l_nelio = lavistaja * lavistaja
+    # TODO: tee tähän virhe jos joku luvuista on 0 (Raise)
+    try:
+        A_nelio = sivuA * sivuA
+        B_nelio = sivuB * sivuB
+        l_nelio = lavistaja * lavistaja
+        pitaisi_olla = A_nelio + B_nelio
+        ero = l_nelio**0.5 - pitaisi_olla**0.5
 
-    if A_nelio + B_nelio == l_nelio:
-        suora = True
-    else:
-        suora = False
-    return suora
+    except:
+        ero = 999
+        print('Syötetty arvo on virheellinen')
+    finally:    
+        return ero
 
 # Testataan, että toimii, poista tämä myöhemmin
 if __name__ == "__main__":
@@ -30,4 +32,3 @@ if __name__ == "__main__":
     # Testi kulma ei ole suora
     vastaus = suorakulma(3, 4, 6)
     print(vastaus)
-
